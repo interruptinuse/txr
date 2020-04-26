@@ -1,3 +1,57 @@
+                                    TXR 237
+                                   2020-04-26
+
+
+  Features
+
+  - I/O:
+    - get-line-as-buf function: read a line from a text stream
+      as a buf object: saves storage compared to a string.
+    - poll function now enables async signal handlers invocation,
+      allowing it to beinterrupted.
+
+  - Parser:
+    - improvement in buffering of stream reads in lexical
+      analyzer speeds up parsing.
+    - compiled files (.tlo) load something like 75% faster.
+
+  - Math:
+    - relational functions =, <, >, <= and >= now work
+      on sequences of numbers.
+    - /= function avoids consing.
+
+  - Sockets:
+    - poll is now used for timed out connect and accept;
+      select is a fallback if poll is not detected at config time.
+
+  Bugs
+
+  - Sequences:
+    - uninitialized memory problem affecting the functions
+      in, reverse, find, rfind, pos, rpos and tprint
+      when used with vector-like sequences.
+    - The function in is also affected when used with
+      hashes.
+
+  - Compiler:
+    - fixed miscompilation of if form when the test is
+      a constant expression that evaluates to false.
+
+  - tags.tl:
+    - fixed bug in file opening logic when following (load ...) forms.
+
+  - Printer:
+    - symbols with zero-length names now printed with package prefix,
+      instead of nothing, so they enjoy read-print consistency.
+
+  - Sockets:
+    - broken timed-out connect fixed.
+
+  - FFI:
+    - some bugs fixed in carray code after a code review.
+
+
+
                                     TXR 236
                                    2020-04-18
 
