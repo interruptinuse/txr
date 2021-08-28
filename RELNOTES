@@ -1,3 +1,48 @@
+                                    TXR 269
+                                   2021-08-28
+
+                          Twelfth Anniversary Edition
+
+
+  Features
+
+  - networking:
+    - getaddrinfo now implements ai-canonname flag.
+  - system interface:
+    - mmap function now supported, integrated with carray.
+      - mprotect, msync, madvise are there.
+  - structural pattern matching:
+    - new match and match-ecase macros for irrefutable matching.
+  - basic Lisp:
+    - new ecase family of macros.
+  - sequences/iterables:
+    - string ranges like "AAA".."ZZZ" are now iterable.
+    - iterators (objects from iter-begin) are iterable.
+    - sub function allows iterables.
+  - FFI:
+    - carray-pun function allows displacement
+    - improved support for big/little endian types:
+      - more efficient when matches local endian
+      - aligned reads and writes transfer word at a time.
+  - PRNG:
+    - new random-buf function for obtaining a block of
+      pseudo-random bytes.
+  - doc improvements.
+  - build/port:
+    - builds on FreeBSD; test cases pass.
+    - new --no-full-repl option builds trimmed-down listener
+      that supports only plain mode editing, not requiring termios.
+
+  Bugs
+
+  - int-str: bug stripping 0x unconditionally regardess of radix argument.
+  - format: leading sign state leaking into subsequent conversions.
+  - ffi: deffi: broken support for variadic functions.
+  - random: bug with modulus that is multiple of 32 bits, found on PPC64.
+  - open-file: "+" mode must be equivalent to "r+" not "r".
+
+
+
 				    TXR 268
 				   2021-08-07
 
