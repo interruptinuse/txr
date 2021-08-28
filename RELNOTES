@@ -1,3 +1,26 @@
+                                    TXR 270
+                                   2021-08-30
+
+
+  Features
+
+  - open-file now supports "x" mode for exclusive create, contributed
+    by Paul A. Patience.
+
+  Bugs
+
+  - sequence iteration:
+    - garbage collection corruption was discovered via experimentation
+      with string ranges (new feature in 269).
+      - caused by not properly doing the counter-generation object mutations.
+      - Bug is not new: affects bignum ranges, oop sequences.
+    - iterating ranges that go from fixnum to bignum now allowed.
+  - open-file:
+    - "+" mode was behaving like "r" and not "r+" (Paul A. Patience)
+    - "w+", "m+" and "a+" refused to create file (Paul A. Patience)
+
+
+
                                     TXR 269
                                    2021-08-28
 
