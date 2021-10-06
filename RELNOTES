@@ -1,3 +1,69 @@
+                                    TXR 272
+                                   2021-11-11
+
+
+  Features:
+
+  - path manipulation:
+    - new path-equal function for comparing paths.
+  - pic macro:
+    - support for digit-separating commas.
+    - support for (...) notation for negative values.
+  - FFI:
+    - internal improvements and minor optimizations.
+    - more ergonomic handling of carray, cptr passed
+      by pointer.
+  - compiler:
+    - now diagnoses constant expressions that throw.
+    - improved elimination of wasteful jmp instructions.
+    - minor new optimization eliminating a wasteful register copy.
+  - PRNG:
+    - new random-float-incl function: like random-float
+      but the range is [0, 1] rather than [0, 1).
+  - syntactic places:
+    - new read-once accessor for caching a place so
+      that it is read only once even by place mutating
+      operators which access it more than once.
+    - ifa macro semantics adjusted to take advantage of read-once.
+
+  Bugs:
+
+  - FFI:
+    - broken range checks in enum types.
+    - bad format calls in enum error handling code.
+  - math:
+    - bad edge cases in 64 bit conversion (affecting
+      32-bit platforms).
+  - path manipulation:
+    - rel-path bugfixes for native Windows.
+  - printer:
+    - cases where fallback package syms are wrongly
+      printed without package prefix.
+  - compiler:
+    - ordering issue in load-time.
+    - incorrect algebraic transformation of
+      (- a b c ...) minus forms.
+    - incorrect code generation when compiling catch forms.
+    - top-level lambdas no longer captured into D
+      registers:
+      - not strictly a bug, but undesirable behavior that
+        crept in when lambda lifting by load-time was
+        introduced.
+  - syntax:
+    - broken #; syntax for first element of list.
+  - listener:
+    - bug causing incomplete auto-loading of modules
+      during Tab completion.
+  - structural pattern matching:
+    - unquoted quasiliteral patterns now work.
+  - less function:
+    - crash when arguments are symbolic and
+      the right one is nil.
+    - other inconsistent, incorrect behavior for some
+      combinations of symbolic arguments.
+
+
+
                                     TXR 271
                                    2021-10-05
 
